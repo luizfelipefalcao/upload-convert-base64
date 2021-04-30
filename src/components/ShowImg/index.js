@@ -16,7 +16,7 @@ function ShowImg() {
     <div>
       <h1>Images:</h1>
       <div>
-        {images}
+        {/* Map function here */}
       </div>
     </div>
   );
