@@ -1,0 +1,42 @@
+.select-field {
+    width: 30rem;
+    height: 30rem;
+    padding: 30px;
+    margin: 30px;
+}
+
+.select-img {
+    height: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    margin-top: 10px;
+}
+
+.title > label {
+    font-size: 1.05rem;
+}
+
+.title > input  {
+    border-color: 1px solid rgba(0, 0, 0, .3);
+    padding: 5px;
+}
+
+.select-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.select-btn > input, button, a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.03em;
+
+}
