@@ -29,6 +29,14 @@ to run the application
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+```bash
+Also you need:
+
+npm run server
+to run the server and watch db.json file
+
+
 ## Commands
 
-- `start`: starts the application on `localhost:3000`
+- `npm start`: starts the application on `localhost:3000`
+- `npm run server`: starts the server on `localhost:3003/images`
