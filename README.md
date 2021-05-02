@@ -5,7 +5,8 @@ This project was bootstrapped with Create React App.
 This project uses lot of stuff as:
 
 - ReactJs
-- Axios
+- ReactHooks
+- FetchData
 - CSS
 
 
