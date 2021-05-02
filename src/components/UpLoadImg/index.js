@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import './style.css';
 
-import axios from 'axios';
 import { Link, withRouter } from "react-router-dom";
+// import axios from 'axios';
 
-const accessToken = '9944b09199c62bcf9418d846dd0e4bbdfc6ee4b';
+// const accessToken = 'c83e6427405b98a716461b1c2c1455ddd30dc75c';
 
-axios.interceptors.request.use(
-  config => {
-    config.headers.authorization = `Bearer ${accessToken}`;
-    return config;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
+// const apiURL = 'http://143.198.59.202:8000/api/images';
+
+// axios.interceptors.request.use(
+//   config => {
+//     config.headers.authorization = `Bearer ${accessToken}`;
+//     return config
+//   },
+//   error => {
+//     return Promise.reject(error);
+//   }
+// );
 
 function UpLoadImg() {
 
@@ -43,11 +45,23 @@ function UpLoadImg() {
   };
 
   const uploadImage = async () => {
-    const fd = new FormData();
-    fd.append('file', baseImage);
-    await axios.post('http://143.198.59.202:8000/api/images', fd)
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    try {
+      await fetch('http://localhost:3003/images', {
+        method: 'POST',
+        body: JSON.stringify({
+          "id": Math.random(),
+          "title": imageTitle,
+          "body": baseImage,
+        }),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+    }catch(e) {
+      console.log('erro')
+    }
   };
   
   return (
@@ -55,7 +69,7 @@ function UpLoadImg() {
         <div className='select-img'>
           {
             baseImage ? (
-              <img src={baseImage} height="220px" alt={baseImage.name}/>
+              <img src={baseImage} height="200px" alt={baseImage.name}/>
             ) : (
               <h2>Upload your image!</h2>
             )
@@ -73,7 +87,9 @@ function UpLoadImg() {
         </div>
         <div className='select-btn'>
           <input type="file" onChange={(e) => selectImage(e)}/>
-          <button onClick={uploadImage}>
+          <button 
+            onClick={uploadImage}
+          >
             <Link to="/search-img">Send Image</Link>
           </button>
         </div>
